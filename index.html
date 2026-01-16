@@ -1,546 +1,858 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gadget Protection Landing Page</title>
-    <style>
-      :root {
-        --blue-900: #0b4f9f;
-        --blue-700: #0a64c8;
-        --blue-100: #eaf3fb;
-        --gray-900: #1f2937;
-        --gray-700: #4b5563;
-        --gray-500: #6b7280;
-        --gray-200: #e5e7eb;
-        --white: #ffffff;
-      }
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Protect your device</title>
+  <style>
+    :root{
+      --page-max: 980px;
 
-      * {
-        box-sizing: border-box;
-      }
+      --ink: #20222A;
+      --muted: #6B7280;
+      --muted-2: #8A93A3;
 
-      body {
-        margin: 0;
-        font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
-          "Helvetica Neue", sans-serif;
-        color: var(--gray-900);
-        background: #f8fbff;
-      }
+      --bg: #ffffff;
+      --panel: #EAF3FA;              /* light blue section */
+      --border: #D9E3EF;
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+      --brand: #0B66C3;              /* primary blue button */
+      --brand-2: #0A5BB0;
 
-      .container {
-        max-width: 1050px;
-        margin: 0 auto;
-        padding: 0 24px;
-      }
+      --link: #0B66C3;
 
-      header {
-        background: var(--white);
-        border-bottom: 1px solid var(--gray-200);
-      }
+      --card: #ffffff;
+      --shadow: 0 1px 0 rgba(16,24,40,.04), 0 8px 22px rgba(16,24,40,.06);
 
-      .header-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 20px 0;
-      }
+      --icon: #7B61FF;               /* purple-ish line art */
+      --icon-soft: rgba(123,97,255,.18);
 
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-weight: 600;
-      }
+      --radius-lg: 14px;
+      --radius-md: 12px;
+      --radius-sm: 10px;
 
-      .logo-mark {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        border: 2px solid var(--blue-700);
-        display: grid;
-        place-items: center;
-        color: var(--blue-700);
-        font-weight: 700;
-        font-size: 14px;
-      }
+      --focus: 0 0 0 4px rgba(11,102,195,.20);
+    }
 
-      .nav-link {
-        font-size: 14px;
-        color: var(--gray-500);
-      }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:#fff;
+      line-height:1.4;
+    }
 
-      .hero {
-        background: var(--blue-100);
-        padding: 72px 0 32px;
-        position: relative;
-        overflow: hidden;
-      }
+    /* Page frame (to mimic screenshot white margins) */
+    .frame{
+      max-width: calc(var(--page-max) + 160px);
+      margin: 0 auto;
+      background: #fff;
+      padding: 0 18px 0;
+    }
 
-      .hero-content {
-        text-align: center;
-        max-width: 680px;
-        margin: 0 auto;
-      }
+    /* Header */
+    .header{
+      height: 78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 0 26px;
+      border-bottom: 1px solid rgba(0,0,0,.02);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:inherit;
+    }
+    .brand svg{ display:block; }
+    .brand-name{
+      font-size:13px;
+      line-height:1.1;
+      font-weight:600;
+      letter-spacing:-.01em;
+    }
+    .brand-name span{
+      display:block;
+      font-weight:600;
+    }
+    .header a.account{
+      font-size:13px;
+      color:var(--ink);
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius: 10px;
+    }
+    .header a.account:hover{ background: rgba(11,102,195,.06); }
+    .header a.account:focus-visible{ outline:none; box-shadow: var(--focus); }
 
-      .hero h1 {
-        font-size: 36px;
-        margin: 0 0 12px;
-      }
+    /* Section base */
+    section{
+      width:100%;
+    }
+    .container{
+      max-width: var(--page-max);
+      margin: 0 auto;
+      padding: 0 26px;
+    }
 
-      .hero p {
-        color: var(--gray-700);
-        margin: 0 0 24px;
-        line-height: 1.6;
-      }
+    /* HERO */
+    .hero{
+      background: var(--panel);
+      position: relative;
+      overflow:hidden;
+    }
+    .hero-inner{
+      padding: 52px 26px 34px;
+      text-align:center;
+      position:relative;
+    }
+    .hero h1{
+      margin: 0 auto 10px;
+      font-size: 34px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+    .hero p.sub{
+      margin: 0 auto 18px;
+      font-size: 12px;
+      color: #3B4657;
+      max-width: 560px;
+    }
 
-      .primary-button {
-        background: var(--blue-700);
-        color: var(--white);
-        border: none;
-        padding: 12px 26px;
-        border-radius: 999px;
-        font-weight: 600;
-        cursor: pointer;
-        box-shadow: 0 10px 20px rgba(10, 100, 200, 0.2);
-      }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height: 38px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      font-size: 12px;
+      cursor:pointer;
+      text-decoration:none;
+      user-select:none;
+      transition: transform .05s ease, background .15s ease, box-shadow .15s ease, border-color .15s ease;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      background: var(--brand);
+      color:#fff;
+      box-shadow: 0 8px 18px rgba(11,102,195,.18);
+    }
+    .btn-primary:hover{ background: var(--brand-2); }
+    .btn-primary:active{ transform: translateY(1px); }
+    .btn-primary:focus-visible{ outline:none; box-shadow: var(--focus), 0 10px 22px rgba(11,102,195,.16); }
 
-      .hero-note {
-        margin-top: 18px;
-        font-size: 13px;
-        color: var(--gray-500);
-      }
+    .hero p.note{
+      margin: 12px auto 0;
+      font-size: 11px;
+      color:#344055;
+      max-width: 520px;
+    }
 
-      .hero-icons {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-      }
+    .trust{
+      margin-top: 14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      color:#111827;
+      font-size: 11px;
+    }
+    .trust .pill{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      color:#111827;
+    }
+    .trust .stars{
+      display:flex;
+      gap:2px;
+      transform: translateY(-.5px);
+    }
+    .trust .reviews{
+      color:#4B5563;
+    }
+    .trust .tp{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      color:#111827;
+    }
+    .trust .tp svg{ transform: translateY(-.5px); }
 
-      .hero-icon {
-        position: absolute;
-        width: 72px;
-        height: 72px;
-        border-radius: 18px;
-        border: 2px solid #9ab7e3;
-        color: #7da2de;
-        display: grid;
-        place-items: center;
-        font-size: 22px;
-        background: rgba(255, 255, 255, 0.6);
-        transform: rotate(-8deg);
-      }
+    /* Decorative line icons in hero */
+    .hero-illus{
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity: 1;
+    }
+    .hero-illus .d{
+      position:absolute;
+      width: 92px;
+      height: 92px;
+      color: var(--icon);
+      filter: drop-shadow(0 10px 14px rgba(123,97,255,.10));
+      opacity: .9;
+    }
+    .hero-illus .d.small{ width: 72px; height: 72px; opacity:.85; }
+    .hero-illus .d.tiny{ width: 62px; height: 62px; opacity:.85; }
 
-      .hero-icon.one {
-        top: 40px;
-        left: 120px;
-      }
+    /* approximate positions from screenshot */
+    .d.laptop-left { left: 14px; top: 120px; }
+    .d.tablet-top  { left: 210px; top: 36px; }
+    .d.console-tr  { right: 180px; top: 52px; }
+    .d.laptop-r    { right: 22px; top: 140px; }
+    .d.headphones  { left: 170px; top: 206px; }
+    .d.watch       { right: 220px; top: 220px; }
+    .d.sparkle     { left: 32px; top: 166px; width:40px; height:40px; opacity:.55; }
+    .d.sparkle2    { right: 60px; top: 236px; width:40px; height:40px; opacity:.55; }
 
-      .hero-icon.two {
-        top: 80px;
-        right: 140px;
-      }
+    /* Eligible types */
+    .eligible{
+      padding: 28px 0 24px;
+    }
+    .eligible h2{
+      margin: 0;
+      text-align:center;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .eligible p{
+      margin: 8px auto 18px;
+      text-align:center;
+      max-width: 720px;
+      font-size: 11px;
+      color:#4B5563;
+      line-height:1.5;
+    }
+    .types{
+      margin-top: 2px;
+      display:flex;
+      justify-content:center;
+      gap: 40px;
+      flex-wrap:wrap;
+    }
+    .type{
+      width: 110px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      text-align:center;
+    }
+    .type .glyph{
+      width: 30px;
+      height: 30px;
+      color:#2D3748;
+      opacity:.95;
+    }
+    .type span{
+      font-size: 10px;
+      color:#111827;
+      font-weight:600;
+    }
 
-      .hero-icon.three {
-        bottom: 50px;
-        left: 80px;
-      }
+    /* Benefits panel */
+    .benefits{
+      background: var(--panel);
+      padding: 30px 0 26px;
+    }
+    .benefits h2{
+      margin: 0 0 16px;
+      text-align:center;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color:#253041;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items:stretch;
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid rgba(0,0,0,.04);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 16px 16px 14px;
+      min-height: 150px;
+    }
+    .card h3{
+      margin: 0 0 10px;
+      font-size: 12px;
+      font-weight:700;
+      color:#111827;
+    }
+    .list{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      font-size: 11px;
+      color:#374151;
+    }
+    .li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .tick, .cross{
+      flex:0 0 auto;
+      width: 18px;
+      height: 18px;
+      margin-top: -1px;
+    }
+    .benefits .policy-link{
+      margin-top: 14px;
+      text-align:center;
+      font-size: 10px;
+      color:#4B5563;
+    }
+    a{
+      color: var(--link);
+      text-decoration: none;
+    }
+    a:hover{ text-decoration: underline; }
+    a:focus-visible{ outline:none; box-shadow: var(--focus); border-radius:8px; }
 
-      .hero-icon.four {
-        bottom: 30px;
-        right: 120px;
-      }
+    /* FAQ */
+    .faq{
+      padding: 32px 0 26px;
+    }
+    .faq h2{
+      margin: 0;
+      text-align:center;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing:-0.01em;
+      color:#111827;
+    }
+    .faq p{
+      margin: 6px 0 18px;
+      text-align:center;
+      font-size: 11px;
+      color:#6B7280;
+    }
+    .faq-list{
+      max-width: 740px;
+      margin: 0 auto;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
 
-      .trustbar {
-        background: var(--white);
-        padding: 16px 0;
-        text-align: center;
-        font-size: 13px;
-        color: var(--gray-500);
-        border-bottom: 1px solid var(--gray-200);
-      }
+    details.faq-item{
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background:#fff;
+      overflow:hidden;
+    }
+    details.faq-item[open]{
+      box-shadow: 0 10px 26px rgba(16,24,40,.06);
+    }
 
-      .trust-stars {
-        display: inline-flex;
-        gap: 4px;
-        margin: 0 8px;
-      }
+    summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 10px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color:#111827;
+      background:#fff;
+    }
+    summary::-webkit-details-marker{ display:none; }
 
-      .star {
-        width: 14px;
-        height: 14px;
-        border-radius: 3px;
-        background: #3bb54a;
-      }
+    .faq-right{
+      flex:0 0 auto;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(11,102,195,.08);
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(11,102,195,.10);
+    }
+    .faq-right svg{ width: 12px; height: 12px; color: var(--brand); }
 
-      .section {
-        padding: 60px 0;
-        text-align: center;
-      }
+    details[open] .faq-right{
+      background: rgba(11,102,195,.10);
+    }
 
-      .section h2 {
-        margin-bottom: 12px;
-        font-size: 28px;
-      }
+    .faq-body{
+      padding: 0 12px 12px;
+      font-size: 10px;
+      color:#4B5563;
+      line-height:1.55;
+    }
 
-      .section p {
-        color: var(--gray-700);
-        max-width: 720px;
-        margin: 0 auto 32px;
-        line-height: 1.6;
-      }
+    /* "Close X" on the open item (top-right like screenshot) */
+    .faq-x{
+      width: 24px;
+      height: 24px;
+      border-radius: 10px;
+      border: 1px solid rgba(11,102,195,.14);
+      background: rgba(11,102,195,.06);
+      display:grid;
+      place-items:center;
+      margin-left: 10px;
+    }
+    .faq-x svg{ width: 12px; height: 12px; color: var(--brand); }
 
-      .gadget-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 20px;
-        margin-top: 24px;
-      }
+    /* When open, show X instead of minus */
+    details.faq-item .icon-open{ display:none; }
+    details.faq-item[open] .icon-open{ display:block; }
+    details.faq-item[open] .icon-closed{ display:none; }
 
-      .gadget-card {
-        background: var(--white);
-        border-radius: 16px;
-        padding: 18px 16px;
-        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
-      }
+    /* "More FAQs" link */
+    .more-faqs{
+      text-align:center;
+      margin-top: 14px;
+      font-size: 11px;
+      font-weight: 600;
+    }
 
-      .gadget-icon {
-        width: 40px;
-        height: 40px;
-        margin: 0 auto 10px;
-        border-radius: 12px;
-        background: var(--blue-100);
-        color: var(--blue-700);
-        display: grid;
-        place-items: center;
-        font-size: 18px;
-      }
+    /* Bottom CTA band */
+    .cta-band{
+      background: var(--brand);
+      padding: 28px 0 28px;
+      color:#fff;
+    }
+    .cta-band h2{
+      margin: 0;
+      text-align:center;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing:-0.01em;
+    }
+    .cta-band p{
+      margin: 6px auto 14px;
+      text-align:center;
+      font-size: 11px;
+      max-width: 520px;
+      color: rgba(255,255,255,.85);
+    }
+    .btn-light{
+      background:#fff;
+      color:#111827;
+      border: 1px solid rgba(255,255,255,.30);
+      box-shadow: 0 12px 22px rgba(0,0,0,.14);
+    }
+    .btn-light:hover{ background: rgba(255,255,255,.96); }
+    .btn-light:active{ transform: translateY(1px); }
+    .btn-light:focus-visible{ outline:none; box-shadow: 0 0 0 4px rgba(255,255,255,.25), 0 12px 22px rgba(0,0,0,.14); }
 
-      .gadget-card span {
-        font-size: 13px;
-        color: var(--gray-700);
-        font-weight: 600;
-      }
+    .cta-band .center{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
 
-      .benefits {
-        background: var(--blue-100);
-      }
+    /* Footer placeholder */
+    .footer{
+      background:#E6E6E6;
+      height: 110px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#7A7A7A;
+      font-size: 11px;
+    }
 
-      .benefit-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-        margin-top: 36px;
-      }
+    /* Responsiveness */
+    @media (max-width: 900px){
+      .hero h1{ font-size: 28px; }
+      .cards{ grid-template-columns: 1fr; gap: 14px; }
+      .types{ gap: 22px; }
+      .hero-illus .d{ display:none; } /* keep layout clean on small screens */
+    }
+  </style>
+</head>
 
-      .benefit-card {
-        background: var(--white);
-        border-radius: 16px;
-        padding: 24px;
-        text-align: left;
-        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
-      }
+<body>
+  <div class="frame">
 
-      .benefit-card h3 {
-        margin-top: 0;
-      }
-
-      .benefit-card ul {
-        margin: 0;
-        padding-left: 20px;
-        color: var(--gray-700);
-        line-height: 1.7;
-      }
-
-      .link-note {
-        margin-top: 24px;
-        font-size: 12px;
-        color: var(--gray-500);
-      }
-
-      .link-note a {
-        color: var(--blue-700);
-        font-weight: 600;
-      }
-
-      .faq {
-        background: var(--white);
-      }
-
-      .faq-items {
-        max-width: 760px;
-        margin: 32px auto 0;
-        display: grid;
-        gap: 14px;
-      }
-
-      .faq-item {
-        border: 1px solid var(--gray-200);
-        border-radius: 14px;
-        padding: 16px 18px;
-        text-align: left;
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
-        align-items: flex-start;
-      }
-
-      .faq-item p {
-        margin: 6px 0 0;
-        font-size: 14px;
-        color: var(--gray-700);
-      }
-
-      .faq-icon {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background: var(--blue-100);
-        color: var(--blue-700);
-        display: grid;
-        place-items: center;
-        font-weight: 700;
-      }
-
-      .more-faq {
-        margin-top: 28px;
-        display: inline-block;
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--blue-700);
-      }
-
-      .cta {
-        background: var(--blue-700);
-        color: var(--white);
-        padding: 48px 0;
-        text-align: center;
-      }
-
-      .cta p {
-        margin: 8px auto 20px;
-        max-width: 520px;
-        color: #e5effc;
-      }
-
-      .cta .primary-button {
-        background: var(--white);
-        color: var(--blue-700);
-        box-shadow: none;
-      }
-
-      footer {
-        background: #e5e7eb;
-        color: var(--gray-500);
-        text-align: center;
-        padding: 30px 0;
-        font-size: 13px;
-      }
-
-      @media (max-width: 768px) {
-        .hero h1 {
-          font-size: 28px;
-        }
-
-        .hero-icon {
-          width: 56px;
-          height: 56px;
-          font-size: 18px;
-        }
-
-        .hero-icon.one {
-          left: 20px;
-        }
-
-        .hero-icon.two {
-          right: 20px;
-        }
-
-        .hero-icon.three {
-          left: 24px;
-        }
-
-        .hero-icon.four {
-          right: 18px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="container header-content">
-        <div class="logo">
-          <div class="logo-mark">DG</div>
-          <span>Domestic General</span>
+    <!-- Header -->
+    <header class="header" role="banner">
+      <a class="brand" href="#" aria-label="Domestic & General home">
+        <!-- simple logo mark + wordmark (inline SVG so it travels with the code) -->
+        <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+          <circle cx="14" cy="14" r="13" fill="#EAF3FA" stroke="#0B66C3" stroke-width="1.2"/>
+          <path d="M8.1 14a5.9 5.9 0 0 1 10.5-3.8" fill="none" stroke="#0B66C3" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M19.9 14a5.9 5.9 0 0 1-10.5 3.8" fill="none" stroke="#0B66C3" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M14 8.2v11.6" stroke="#0B66C3" stroke-width="1.2" stroke-linecap="round" opacity=".5"/>
+        </svg>
+        <div class="brand-name" aria-hidden="true">
+          <span>Domestic</span>
+          <span>&amp; General</span>
         </div>
-        <a class="nav-link" href="#">My Account</a>
-      </div>
+      </a>
+
+      <a class="account" href="#" role="link">My Account</a>
     </header>
 
-    <section class="hero">
-      <div class="hero-icons">
-        <div class="hero-icon one">📱</div>
-        <div class="hero-icon two">🎮</div>
-        <div class="hero-icon three">🎧</div>
-        <div class="hero-icon four">⌚</div>
+    <!-- Hero -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-illus" aria-hidden="true">
+        <!-- Decorative line-art (approximate) -->
+        <div class="d laptop-left small">
+          <svg viewBox="0 0 96 96">
+            <rect x="16" y="22" width="52" height="34" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M10 62h68" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M20 62l-6 10h70l-6-10" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="13" cy="72" r="2" fill="currentColor" opacity=".45"/>
+            <circle cx="83" cy="72" r="2" fill="currentColor" opacity=".45"/>
+          </svg>
+        </div>
+
+        <div class="d tablet-top tiny">
+          <svg viewBox="0 0 96 96">
+            <rect x="26" y="14" width="40" height="60" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+            <circle cx="46" cy="64" r="2.5" fill="currentColor" opacity=".45"/>
+            <path d="M34 22h24" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".6"/>
+          </svg>
+        </div>
+
+        <div class="d console-tr tiny">
+          <svg viewBox="0 0 96 96">
+            <path d="M20 58c2-10 10-18 20-18h16c10 0 18 8 20 18l3 13c1 5-2 9-7 9-4 0-7-2-8-6l-2-6H34l-2 6c-1 4-4 6-8 6-5 0-8-4-7-9l3-13Z"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M34 52h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M39 47v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="62" cy="52" r="2.2" fill="currentColor" opacity=".55"/>
+            <circle cx="70" cy="56" r="2.2" fill="currentColor" opacity=".55"/>
+          </svg>
+        </div>
+
+        <div class="d laptop-r small">
+          <svg viewBox="0 0 96 96">
+            <rect x="18" y="24" width="54" height="34" rx="4" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 64h72" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 64l-6 10h76l-6-10" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="d headphones small">
+          <svg viewBox="0 0 96 96">
+            <path d="M24 52a24 24 0 0 1 48 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <rect x="18" y="52" width="14" height="24" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+            <rect x="64" y="52" width="14" height="24" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </div>
+
+        <div class="d watch small">
+          <svg viewBox="0 0 96 96">
+            <rect x="36" y="18" width="24" height="16" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+            <rect x="30" y="30" width="36" height="40" rx="10" fill="none" stroke="currentColor" stroke-width="2"/>
+            <rect x="36" y="70" width="24" height="16" rx="6" fill="none" stroke="currentColor" stroke-width="2"/>
+            <path d="M48 40v10l8 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="66" cy="50" r="3" fill="currentColor" opacity=".4"/>
+          </svg>
+        </div>
+
+        <div class="d sparkle">
+          <svg viewBox="0 0 96 96">
+            <path d="M48 18l6 18 18 6-18 6-6 18-6-18-18-6 18-6 6-18Z" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/>
+          </svg>
+        </div>
+        <div class="d sparkle2">
+          <svg viewBox="0 0 96 96">
+            <path d="M48 18l6 18 18 6-18 6-6 18-6-18-18-6 18-6 6-18Z" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/>
+          </svg>
+        </div>
       </div>
-      <div class="container hero-content">
+
+      <div class="container hero-inner">
         <h1>Protect a device you already own</h1>
-        <p>
-          You&apos;ve been invited to protect an eligible device you already own,
-          subject to simple eligibility checks.
-        </p>
-        <button class="primary-button">Protect my device</button>
-        <div class="hero-note">
-          You can add more than one gadget later, if you choose. Cancel anytime.
+        <p class="sub">You’ve been invited to protect an eligible device you already own, subject to simple eligibility checks.</p>
+
+        <a class="btn btn-primary" href="choose-your-device-type.html" role="button" aria-label="Protect my device">
+          Protect my device
+        </a>
+
+        <p class="note">You can add more than one gadget later, if you choose. Cancel anytime.</p>
+
+        <div class="trust" aria-label="Trustpilot rating">
+          <span class="pill"><strong>Great</strong></span>
+
+          <span class="stars" aria-hidden="true">
+            <!-- 5 green squares -->
+            <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="14" height="14" rx="2" fill="#00B67A"/><path d="M7 1.8l1.5 3 3.3.5-2.4 2.3.6 3.3L7 9.6 4 11l.6-3.3L2.2 5.3l3.3-.5L7 1.8Z" fill="#fff"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="14" height="14" rx="2" fill="#00B67A"/><path d="M7 1.8l1.5 3 3.3.5-2.4 2.3.6 3.3L7 9.6 4 11l.6-3.3L2.2 5.3l3.3-.5L7 1.8Z" fill="#fff"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="14" height="14" rx="2" fill="#00B67A"/><path d="M7 1.8l1.5 3 3.3.5-2.4 2.3.6 3.3L7 9.6 4 11l.6-3.3L2.2 5.3l3.3-.5L7 1.8Z" fill="#fff"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="14" height="14" rx="2" fill="#00B67A"/><path d="M7 1.8l1.5 3 3.3.5-2.4 2.3.6 3.3L7 9.6 4 11l.6-3.3L2.2 5.3l3.3-.5L7 1.8Z" fill="#fff"/></svg>
+            <svg width="14" height="14" viewBox="0 0 14 14"><rect x="0" y="0" width="14" height="14" rx="2" fill="#00B67A"/><path d="M7 1.8l1.5 3 3.3.5-2.4 2.3.6 3.3L7 9.6 4 11l.6-3.3L2.2 5.3l3.3-.5L7 1.8Z" fill="#fff"/></svg>
+          </span>
+
+          <span class="reviews">55,792 reviews on</span>
+
+          <span class="tp">
+            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2l3 8h8l-6.5 4.7L19 22l-7-5-7 5 2.5-7.3L1 10h8l3-8Z" fill="#00B67A"/>
+            </svg>
+            <strong>Trustpilot</strong>
+          </span>
         </div>
       </div>
     </section>
 
-    <div class="trustbar">
-      Great
-      <span class="trust-stars">
-        <span class="star"></span>
-        <span class="star"></span>
-        <span class="star"></span>
-        <span class="star"></span>
-        <span class="star"></span>
-      </span>
-      55,792 reviews on Trustpilot
-    </div>
-
-    <section class="section">
+    <!-- Eligible gadget types -->
+    <section class="eligible" aria-label="Eligible gadget types">
       <div class="container">
         <h2>Eligible gadget types</h2>
-        <p>
-          These are the types of gadgets you can protect. Each device must also
-          meet our eligibility criteria. Devices must be less than 5 years old,
-          in good working order, and originally cost £100 or more.
-        </p>
-        <div class="gadget-grid">
-          <div class="gadget-card">
-            <div class="gadget-icon">📱</div>
+        <p>These are the types of gadgets you can protect. Each device must also meet our eligibility criteria. Devices must be less than 5 years old, in good working order, and originally cost £100 or more.</p>
+
+        <div class="types" role="list">
+          <div class="type" role="listitem">
+            <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="8" y="2.5" width="8" height="19" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="12" cy="18.5" r="1" fill="currentColor" opacity=".6"/>
+            </svg>
             <span>Mobile phones</span>
           </div>
-          <div class="gadget-card">
-            <div class="gadget-icon">🎮</div>
+
+          <div class="type" role="listitem">
+            <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 15c.6-2.8 3-5 6-5h0c3 0 5.4 2.2 6 5l.8 3.3c.2 1.2-.7 2.2-1.9 2.2-1 0-1.7-.5-2-1.4l-.5-1.5H9.6l-.5 1.5c-.3.9-1 1.4-2 1.4-1.2 0-2.1-1-1.9-2.2L6 15Z"
+                    fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M9.4 12h2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M10.8 10.6v2.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <circle cx="15.6" cy="12.2" r="1" fill="currentColor" opacity=".65"/>
+            </svg>
             <span>Games consoles</span>
           </div>
-          <div class="gadget-card">
-            <div class="gadget-icon">💻</div>
+
+          <div class="type" role="listitem">
+            <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="6" width="16" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M2.5 18h19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
             <span>Laptops</span>
           </div>
-          <div class="gadget-card">
-            <div class="gadget-icon">📱</div>
+
+          <div class="type" role="listitem">
+            <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="6" y="4" width="12" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="12" cy="17.5" r="1" fill="currentColor" opacity=".6"/>
+            </svg>
             <span>Tablets / iPads</span>
           </div>
-          <div class="gadget-card">
-            <div class="gadget-icon">⌚</div>
+
+          <div class="type" role="listitem">
+            <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="8" y="2.5" width="8" height="4" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              <rect x="6.5" y="6" width="11" height="13" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              <rect x="8" y="19" width="8" height="3" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
             <span>Smart watches</span>
           </div>
-          <div class="gadget-card">
-            <div class="gadget-icon">🎧</div>
+
+          <div class="type" role="listitem">
+            <svg class="glyph" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 12a6 6 0 0 1 12 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <rect x="4.5" y="12" width="3.8" height="7" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              <rect x="15.7" y="12" width="3.8" height="7" rx="1.8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
             <span>Headphones</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section benefits">
+    <!-- Benefits -->
+    <section class="benefits" aria-label="The benefits at a glance">
       <div class="container">
         <h2>The benefits at a glance</h2>
-        <div class="benefit-grid">
-          <div class="benefit-card">
-            <h3>What&apos;s covered</h3>
-            <ul>
-              <li>Accidental damage</li>
-              <li>Breakdowns after the manufacturer&apos;s guarantee ends</li>
-              <li>Unlimited repairs by expert engineers</li>
-              <li>A replacement if it can&apos;t be fixed</li>
-              <li>Two loss and theft claims for every 12 months of cover</li>
+
+        <div class="cards">
+          <div class="card" aria-label="What's covered">
+            <h3>What’s covered</h3>
+            <ul class="list">
+              <li class="li">
+                <svg class="tick" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 7l-10 10-5-5" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Accidental damage</span>
+              </li>
+              <li class="li">
+                <svg class="tick" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 7l-10 10-5-5" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Breakdowns after the manufacturer’s guarantee ends</span>
+              </li>
+              <li class="li">
+                <svg class="tick" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 7l-10 10-5-5" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Unlimited repairs by expert engineers</span>
+              </li>
+              <li class="li">
+                <svg class="tick" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 7l-10 10-5-5" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>A replacement if it can’t be fixed (with the same or similar features)</span>
+              </li>
+              <li class="li">
+                <svg class="tick" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M20 7l-10 10-5-5" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Two loss and theft claims for every 12 months of cover</span>
+              </li>
             </ul>
           </div>
-          <div class="benefit-card">
-            <h3>What&apos;s not covered</h3>
-            <ul>
-              <li>
-                Loss of stored information, cosmetic damage, neglect, or
-                deliberate damage
+
+          <div class="card" aria-label="What's not covered">
+            <h3>What’s not covered</h3>
+            <ul class="list">
+              <li class="li">
+                <svg class="cross" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 7l10 10M17 7L7 17" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>Loss of stored information, cosmetic damage, neglect, or deliberate damage</span>
               </li>
-              <li>
-                Costs from not being able to use your product or damage to other
-                property
+              <li class="li">
+                <svg class="cross" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 7l10 10M17 7L7 17" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>Costs from not being able to use your product or damage to other property</span>
               </li>
-              <li>
-                Cover for accessories other than those included with a mobile
+              <li class="li">
+                <svg class="cross" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 7l10 10M17 7L7 17" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <span>Cover for accessories (other than the standard accessories included with a mobile)</span>
               </li>
             </ul>
           </div>
         </div>
-        <div class="link-note">
-          Please read <a href="#">Gadget Insurance Terms and Conditions</a>
+
+        <div class="policy-link">
+          Please read <a href="#" aria-label="Read Gadget Insurance Terms and Conditions">Gadget InsuranceTerms and Conditions</a>
         </div>
       </div>
     </section>
 
-    <section class="section faq">
+    <!-- FAQ -->
+    <section class="faq" aria-label="Frequently asked questions">
       <div class="container">
         <h2>Frequently asked questions</h2>
         <p>Everything you need to know, all in one place.</p>
-        <div class="faq-items">
-          <div class="faq-item">
-            <div>
-              <strong>What gadgets can I insure under this policy?</strong>
-              <p>
-                You can insure mobile phones, laptops, tablets (including
-                iPads), smartwatches, games consoles, and headphones. Devices
-                must be owned by you, used for personal purposes, and meet the
-                policy eligibility criteria.
-              </p>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>
+              <span>What gadgets can I insure under this policy?</span>
+              <span class="faq-x icon-open" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <span class="faq-right icon-closed" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-body">
+              You can insure mobile phones, laptops, tablets (including iPads), smartwatches, games consoles, and headphones. Devices must be owned by you, used for personal (non-business) purposes, and meet the policy’s eligibility criteria, including age, condition, and minimum value requirements.
             </div>
-            <div class="faq-icon">−</div>
-          </div>
-          <div class="faq-item">
-            <div>
-              <strong>Is accidental damage and water damage included?</strong>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Is accidental damage and water damage included?</span>
+              <span class="faq-x icon-open" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <span class="faq-right icon-closed" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-body">
+              Add your answer here.
             </div>
-            <div class="faq-icon">+</div>
-          </div>
-          <div class="faq-item">
-            <div>
-              <strong>Can I claim if my gadget is lost or stolen abroad?</strong>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Can I claim if my gadget is lost or stolen abroad?</span>
+              <span class="faq-x icon-open" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <span class="faq-right icon-closed" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-body">
+              Add your answer here.
             </div>
-            <div class="faq-icon">+</div>
-          </div>
-          <div class="faq-item">
-            <div>
-              <strong>Do I need proof of purchase when I make a claim?</strong>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span>Do I need proof of purchase when I make a claim?</span>
+              <span class="faq-x icon-open" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+              <span class="faq-right icon-closed" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </span>
+            </summary>
+            <div class="faq-body">
+              Add your answer here.
             </div>
-            <div class="faq-icon">+</div>
-          </div>
+          </details>
         </div>
-        <a class="more-faq" href="#">More FAQs</a>
+
+        <div class="more-faqs">
+          <a href="#" aria-label="More FAQs">More FAQs</a>
+        </div>
       </div>
     </section>
 
-    <section class="cta">
-      <div class="container">
-        <h2>Protect your device</h2>
-        <p>
-          You can continue to set up cover for an eligible device you already
-          own.
-        </p>
-        <button class="primary-button">Protect my device</button>
+    <!-- Bottom CTA band -->
+    <section class="cta-band" id="start" aria-label="Protect your device CTA">
+      <div class="container center">
+        <div class="center">
+          <h2>Protect your device</h2>
+          <p>You can continue to set up cover for an eligible device you already own.</p>
+          <a class="btn btn-light" href="choose-your-device-type.html" role="button" aria-label="Protect my device">
+            Protect my device
+          </a>
+        </div>
       </div>
     </section>
 
-    <footer>
-      <div class="container">Footer / Placeholder</div>
+    <footer class="footer" aria-label="Footer">
+      Footer / Placeholder
     </footer>
-  </body>
+
+  </div>
+
+  <script>
+    // Keeps FAQ behaviour predictable (optional): only one open at a time like many accordions.
+    // If you want multiple open, delete this script.
+    const items = Array.from(document.querySelectorAll('details.faq-item'));
+    items.forEach(d => {
+      d.addEventListener('toggle', () => {
+        if (d.open) {
+          items.forEach(other => {
+            if (other !== d) other.open = false;
+          });
+        }
+      });
+    });
+  </script>
+</body>
 </html>
