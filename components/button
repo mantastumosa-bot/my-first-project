@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../styles/tokens.css" />
+    <link rel="stylesheet" href="../styles/typography.css" />
+    <link rel="stylesheet" href="../styles/components.css" />
+
+    <title>Button component</title>
+  </head>
+
+  <body style="padding:32px">
+    <h1>Button component</h1>
+
+    <p>Primary:</p>
+    <a class="btn btn-primary" href="#">Protect my device</a>
+
+    <p style="margin-top:24px">Secondary:</p>
+    <a class="btn btn-secondary" href="#">Cancel</a>
+  </body>
+</html>
