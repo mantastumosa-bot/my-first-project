@@ -1,0 +1,158 @@
+/* =========================================
+   DG TYPE — UK TYPOGRAPHY (copy/paste)
+   Applies sensible defaults to semantic HTML
+   ========================================= */
+
+/* ---------- Base text ---------- */
+html {
+  /* Keep browser defaults stable */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-family-base, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif);
+  font-size: 16px;             /* Ag Body · 16 */
+  line-height: 1.4;            /* 140% */
+  font-weight: 400;
+  color: var(--color-text-primary, #202222);
+}
+
+/* Paragraphs & common body elements */
+p,
+li,
+dd,
+dt,
+label,
+input,
+textarea,
+select,
+button {
+  font-size: 16px;             /* Ag Body · 16 */
+  line-height: 1.4;            /* 140% */
+}
+
+/* Links */
+a {
+  font-size: 16px;             /* Ag Body link · 16 */
+  line-height: 1.4;
+  color: var(--color-brand-primary, #0066cc);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Body variants (optional helpers) */
+.body-large {
+  font-size: 18px;             /* Ag Body larger · 18 */
+  line-height: 1.4;
+}
+
+.body-bold {
+  font-weight: 600;            /* Ag Body bold */
+}
+
+.body-large-bold {
+  font-size: 20px;             /* Ag Body larger bold · 20 */
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Small text helper (optional) */
+.small {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ---------- Desktop headings (UK) ---------- */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--color-text-primary, #202222);
+  margin: 0 0 0.6em 0;
+}
+
+/* UK sizes */
+h1 {
+  font-size: 40px;             /* Ag H1 UK · 40 */
+  line-height: 1.28;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 32px;             /* Ag H2 UK · 32 */
+  line-height: 1.28;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 24px;             /* Ag H3 · 24 */
+  line-height: 1.28;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 20px;             /* Ag H4 · 20 */
+  line-height: 1.28;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 18px;             /* Ag H5 · 18 */
+  line-height: 1.28;
+  font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+/* Supports: <button>, .btn, .button */
+button,
+.btn,
+.button {
+  font-size: 20px;             /* Ag Button txt dtop · 20 */
+  line-height: 1.28;
+  font-weight: 600;
+}
+
+/* If you use icon-only buttons, keep the icon sizing separate */
+.btn-icon,
+.button-icon {
+  width: 44px;
+  height: 44px;
+}
+
+/* ---------- Mobile overrides ---------- */
+@media (max-width: 768px) {
+  /* Mobile headings */
+  h1 {
+    font-size: 28px;           /* Ag H1 mobile · 28 */
+  }
+
+  h2 {
+    font-size: 24px;           /* Ag H2 mobile · 24 */
+  }
+
+  h3 {
+    font-size: 20px;           /* Ag H3 mobile · 20 */
+  }
+
+  h4 {
+    font-size: 18px;           /* Ag H4 mobile · 18 */
+  }
+
+  h5 {
+    font-size: 16px;           /* Ag H5 mobile · 16 */
+  }
+
+  /* Mobile button text */
+  button,
+  .btn,
+  .button {
+    font-size: 18px;           /* Ag Button mobile · 18 */
+  }
+}
