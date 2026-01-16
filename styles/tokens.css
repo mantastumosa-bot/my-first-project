@@ -1,0 +1,113 @@
+/* =========================================
+   DG TYPE — UK TYPOGRAPHY
+   Source of truth for text styles
+   ========================================= */
+
+/* ---------- Body text ---------- */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;          /* Ag Body · 16 */
+  line-height: 1.4;         /* 140% */
+  color: var(--color-text-primary);
+}
+
+p {
+  font-size: 16px;          /* Ag Body · 16 */
+  line-height: 1.4;
+  margin-bottom: 16px;
+}
+
+.body-large {
+  font-size: 18px;          /* Ag Body larger · 18 */
+  line-height: 1.4;
+}
+
+.body-bold {
+  font-weight: 600;         /* Ag Body bold */
+}
+
+a {
+  font-size: 16px;          /* Ag Body link · 16 */
+  line-height: 1.4;
+  color: var(--color-brand-primary);
+  text-decoration: underline;
+}
+
+/* ---------- Desktop headings (UK) ---------- */
+
+h1 {
+  font-size: 40px;          /* Ag H1 UK · 40 */
+  line-height: 1.28;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+h2 {
+  font-size: 32px;          /* Ag H2 UK · 32 */
+  line-height: 1.28;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 24px;          /* Ag H3 · 24 */
+  line-height: 1.28;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+h4 {
+  font-size: 20px;          /* Ag H4 · 20 */
+  line-height: 1.28;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+h5 {
+  font-size: 18px;          /* Ag H5 · 18 */
+  line-height: 1.28;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* ---------- Buttons ---------- */
+
+.button,
+button,
+.btn {
+  font-size: 20px;          /* Ag Button txt dtop · 20 */
+  line-height: 1.28;
+  font-weight: 600;
+}
+
+/* ---------- Mobile overrides ---------- */
+/* (Optional – safe defaults) */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;        /* Ag H1 mobile · 28 */
+  }
+
+  h2 {
+    font-size: 24px;        /* Ag H2 mobile · 24 */
+  }
+
+  h3 {
+    font-size: 20px;        /* Ag H3 mobile · 20 */
+  }
+
+  h4 {
+    font-size: 18px;        /* Ag H4 mobile · 18 */
+  }
+
+  h5 {
+    font-size: 16px;        /* Ag H5 mobile · 16 */
+  }
+
+  .button,
+  button,
+  .btn {
+    font-size: 18px;        /* Ag Button mobile · 18 */
+  }
+}
