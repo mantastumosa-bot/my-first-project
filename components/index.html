@@ -11,13 +11,19 @@
     <title>Button component</title>
   </head>
 
-  <body style="padding:32px">
-    <h1>Button component</h1>
+  <body>
+    <main class="component-page">
+      <section class="button-card" aria-labelledby="button-title">
+        <div class="button-card__header">
+          <h1 id="button-title">Protect your device</h1>
+          <p>Choose a button style that matches the primary action in the flow.</p>
+        </div>
 
-    <p>Primary:</p>
-    <a class="btn btn-primary" href="#">Protect my device</a>
-
-    <p style="margin-top:24px">Secondary:</p>
-    <a class="btn btn-secondary" href="#">Cancel</a>
+        <div class="button-card__actions">
+          <a class="btn btn-primary" href="#">Protect my device</a>
+          <a class="btn btn-secondary" href="#">Maybe later</a>
+        </div>
+      </section>
+    </main>
   </body>
 </html>

@@ -1,6 +1,6 @@
 /* ============================
-   Button component using your
-   design tokens (colors.css)
+   Button component using
+   design tokens (colours)
    ============================ */
 
 /* Base button */
@@ -8,9 +8,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 
-  padding: 14px 22px;
+  min-height: 52px;
+  padding: 0 28px;
   border-radius: 999px;
 
   border: 1px solid transparent;
@@ -18,7 +19,8 @@
 
   font: inherit;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 
   text-decoration: none;
   white-space: nowrap;
@@ -46,7 +48,7 @@ button.btn {
 .btn-primary {
   background-color: var(--primary-600);
   color: #fff;
-  box-shadow: 0 8px 22px rgba(16, 24, 40, 0.10);
+  box-shadow: 0 16px 28px rgba(0, 102, 196, 0.18);
 }
 
 .btn-primary:hover {
@@ -56,7 +58,7 @@ button.btn {
 .btn-primary:active {
   background-color: var(--primary-800);
   transform: translateY(1px);
-  box-shadow: none;
+  box-shadow: 0 8px 18px rgba(0, 102, 196, 0.12);
 }
 
 /* ----------------------------
@@ -65,16 +67,19 @@ button.btn {
 .btn-secondary {
   background-color: var(--neutral-100);
   color: var(--primary-600);
-  border-color: var(--primary-600);
+  border-color: var(--primary-300);
+  box-shadow: 0 10px 22px rgba(16, 24, 40, 0.06);
 }
 
 .btn-secondary:hover {
   background-color: var(--primary-100);
+  border-color: var(--primary-600);
 }
 
 .btn-secondary:active {
   background-color: var(--primary-200);
   transform: translateY(1px);
+  box-shadow: 0 6px 14px rgba(16, 24, 40, 0.05);
 }
 
 /* ----------------------------
@@ -93,7 +98,7 @@ button.btn {
    ---------------------------- */
 .btn:disabled,
 .btn[aria-disabled="true"] {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
   box-shadow: none;
 }
@@ -137,3 +142,40 @@ button.btn {
   width: 100%;
 }
 
+/* ----------------------------
+   Demo layout
+   ---------------------------- */
+.component-page {
+  min-height: 100vh;
+  padding: 48px 20px;
+  display: grid;
+  place-items: center;
+  background: var(--primary-100);
+}
+
+.button-card {
+  width: min(640px, 100%);
+  background: var(--neutral-100);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(16, 24, 40, 0.08);
+  display: grid;
+  gap: 24px;
+}
+
+.button-card__header h1 {
+  margin: 0 0 12px;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+
+.button-card__header p {
+  margin: 0;
+  color: var(--neutral-600);
+}
+
+.button-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
